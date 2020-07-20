@@ -44,3 +44,87 @@ nav .nav-right-section img {
     border-radius: 50%; /*Coloca los bordes circulares para nuestra imagen*/
     margin-left: 10px;
 }
+
+/*------------------------------Termina el header----------------------*/
+
+/*------------------------------Empieza el Main------------------------*/
+
+main {
+    margin-top: 150px;
+    text-align: center; /*Trabajamos con el Display (layout) normal (no GRID ni FLEX)*/
+
+}
+main .main-logo {
+    width: 530px;
+    margin: 0 auto; /*Divide lo que le sobra en dos y lo centra con esas dos distancias*/
+    margin-bottom: 35px;
+}
+main .main-logo img {
+    width: 300px;
+}
+
+main .main-input {
+    width: 530px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+}
+main .main-input-container {
+    width: 525px;
+    border-radius: 100px;
+    border: 1px solid #dfe1e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .main-input input {
+    width: 450px;
+    height: 40px;
+    border: none; /*Desactiva el borde del input*/
+    outline: none; /*Desactiva el borde azul del input*/
+}
+main .main-input-container:hover {/*hover es un pseudoelemento de css, es un efecto*/
+    box-shadow: 0 1px 6px 0 #20212447;
+    border-color: #dfe1e500;
+}
+main .main-input .search-icon { /*icono de lupa*/
+    background-image: url('https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_search_48px-512.png');
+    background-repeat: no-repeat; /*sin importar el tamaño del contenedor la imagen no se repite*/
+    background-position: center;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+}
+main .main-input .micro-icon { /*icono de microfono*/
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/726px-Google_mic.svg.png');
+    background-repeat: no-repeat; /*sin importar el tamaño del contenedor la imagen no se repite*/
+    background-position: center;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+main .main-buttons {
+    width: 530px;
+    margin: 0 auto;
+}
+main .main-buttons div {
+    display: inline-block;
+}
+main .main-buttons button { /*Estilo de los botones*/
+    height: 36px;
+    background-color: f2f2f2;
+    border: 0;
+    font-size: 14px;
+    color: #5f6368;
+    border-radius: 5px;
+    padding: 0 15px; /*El 0 es para Top y Bottom. Los 15px es para left y right*/
+    margin-right: 15px;
+}
+main .main-buttons button:hover {
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #222;
+    background-color: #f8f8f8;
+}
