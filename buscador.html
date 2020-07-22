@@ -8,11 +8,11 @@
   <style>
     body {
       margin: 0px; /*Estamos eliminando el margin*/
-      background-color: #AB88FF;
+      background-color: #8F57FD;
       font-family: 'Muli', sans-serif;
     }
     .header {
-      background-color: #AB88FF;
+      background-color: #8F57FD;
       width: 100%; /*Medida relativa para que se ajuste a todos los niveles de pantalla de inicio a fin*/
       height: 80px;
       display: flex;
@@ -66,6 +66,28 @@
         text-align: right;
         margin: 0px 0px 0px -14px;
     }
+    /*De aqui hacia abajo va todo lo del buscador principal*/
+    .main {
+        height: 300px;
+    }
+    .main__title {
+        color: white;
+        font-size: 25px;
+    }
+    .input {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid white;
+        border-radius: 25px;
+        color: white;
+        font-family: 'Muli', sans-serif;
+        font-size: 16px;
+        height: 50px;
+        padding: 0px 20px;
+        width: 70%;
+    }
+    ::placeholder {
+        color: white;
+    }
   </style>
   <body>
     <header class="header">
@@ -85,5 +107,9 @@
             </ul>
       </div>
     </header>
+    <section class="main">
+        <h2 class="main__title">Qué quieres ver hoy?</h2>
+        <input class="input" type="text" placeholder="Buscar...">
+    </section>
   </body>
 </html>
