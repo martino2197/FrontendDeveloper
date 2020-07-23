@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel 1</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+    .carousel {
+        width: 100%;
+        overflow: scroll; /*el scroll del carousel*/
+        padding: 30px;
+        position: relative; /*Todos los elementos que esten dentro de el se van a posicionar en relacion al padre*/
+    }
+    .carousel__container {
+        white-space: nowrap; /*Que No la envuelva, va dejar que los elementos fluyan hacia la derecha de forma natural*/
+        margin: 70px 0px;
+        padding-bottom: 10px; /*sin este padding se ve cortado al hacer el hover*/
+    }
+    .carousel__item {
+        background-color: palevioletred;
+        width: 200px;
+        height: 250px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-right: 10px;
+        display: inline-block;
+        cursor: pointer;
+        transition: 450ms all; /*suavizamos las transiciones del item*/
+        transform-origin:  center left; /*empieza de izquierda a derecha nuestra animacion*/
+    }
+    .carousel__item:hover ~ .carousel__item{ /*con la ~ hacemos que se quede quieto exactamente nuestro elemento y que se desplacen los que siguen despues de la ~ */
+        transform: translate3d(100px, 0, 0); /*Cuando hagamos hover sobre el item, todos nuestros elemenetos se desplazaran hacia la derecha*/
+    }
+    .carousel__container:hover .carousel__item {
+        opacity: 0.3; /*cambia la opacidad de los elementos sobre los que NO se esta haciendo el hover*/
+    }
+    .carousel__container:hover .carousel__item:hover {/*Aqui va la transformacion para cambiar la escala cuando nos posamos encima del item*/
+        transform: scale(1.5);
+        opacity: 1;
+    }
+</style>
+<body>
+    <section class="carousel">
+        <div class="carousel__container">
+            <div class="carousel__item">
+            </div>
+            <div class="carousel__item">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
