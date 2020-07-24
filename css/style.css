@@ -1,0 +1,63 @@
+body {
+    margin: 0px; /*Estamos eliminando el margin*/
+    font-family: 'Muli', sans-serif;
+}
+header {
+  background-color: #21C08B;
+  width: 100%; /*Medida relativa para que se ajuste a todos los niveles de pantalla de inicio a fin*/
+  height: 80px;
+}
+header img {
+  width: 200px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+/*significa que img es un hijo de header y por lo tanto esto estiliza todas las imagenes
+dentro del header*/
+
+.login {
+    background: linear-gradient(#21C08B, #AB88FF);
+    display: flex;
+    align-items: center; /*alineamos de forma vertical*/
+    justify-content: center; /*alineamos de forma horizontal*/
+    flex-direction: column;
+    padding: 30px 0px;
+    min-height: calc(100vh - 200px); /*por mas grande que sea la altura, simepre se mantendra el mismo valor*/
+    /*100vh view height es una medida relativa e indica el porcentaje que esta viendo el usuario*/
+}
+.login__container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 40px;
+    color: white;
+    padding: 60px 68px 40px;
+    min-height: 700px;
+    width: 300px;
+}
+.login__container--form {
+    display: flex;
+    flex-direction: column;
+}
+.login__container--form label {
+    font-size: 14px;
+}
+.login__container--remember-me { /*detallando el checkbox*/
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.login__container--remember-me a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+.login__container--remember-me a:hover {
+    text-decoration: underline;
+}
+.login__container--social-media > div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
