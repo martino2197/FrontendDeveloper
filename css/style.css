@@ -21,7 +21,7 @@ dentro del header*/
     align-items: center; /*alineamos de forma vertical*/
     justify-content: center; /*alineamos de forma horizontal*/
     flex-direction: column;
-    padding: 30px 0px;
+    padding: 30px 30px;
     min-height: calc(100vh - 200px); /*por mas grande que sea la altura, simepre se mantendra el mismo valor*/
     /*100vh view height es una medida relativa e indica el porcentaje que esta viendo el usuario*/
 }
@@ -33,6 +33,9 @@ dentro del header*/
     padding: 60px 68px 40px;
     min-height: 700px;
     width: 300px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 .login__container--form {
     display: flex;
@@ -60,4 +63,83 @@ dentro del header*/
     align-items: center;
     font-size: 14px;
     margin-bottom: 10px;
+}
+.login__container--social-media > div > img { /*Todas las imagenes (Google y Twitter) que esten dentro del div que esten dentro de social-media*/
+    width: 30px;
+    margin-right: 10px;
+}
+.login__container--register {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+}
+.login__container--register a { /*link 'Registrate'*/
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    padding-left: 2px;
+}
+.login__container--register a:hover {
+    text-decoration: underline; /*Con esto aparece la linea abajo de 'Registrate'*/
+}
+.input {
+    background-color: transparent;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 2px solid white;
+    font-size: 16px;
+    font-family: 'Muli', sans-serif;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+}
+::placeholder {
+    color: white;
+}
+.button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border:  none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    height: 50px;
+    letter-spacing: 1px;
+    margin: 10px;
+}
+/*Lo que sigue es para el footer*/
+.footer {
+    background-color: #AB88FF;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+}
+.footer a {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+/*Media queries*/
+@media only screen and (max-width: 600px) {
+    .login__container{
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+        width: 100%;
+    }
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
