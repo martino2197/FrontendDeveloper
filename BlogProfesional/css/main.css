@@ -35,3 +35,7 @@ header .header-icons-container .icons { /*Esto es para el div que contiene todos
     justify-self: end;
     margin-right: 50px;
 }
+/*Agregando íconos la header*/
+header .icons span {
+    color: white;
+}
