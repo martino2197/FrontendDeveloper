@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet"></linkhref> <!--Traemos la fuente desde google Fonts-->
+    <title></title>
+  </head>
+  <style>
+    body {
+      margin: 0px; /*Estamos eliminando el margin*/
+      background-color: #8F57FD;
+      font-family: 'Muli', sans-serif;
+    }
+    .header {
+      background-color: #8F57FD;
+      width: 100%; /*Medida relativa para que se ajuste a todos los niveles de pantalla de inicio a fin*/
+      height: 80px;
+      display: flex;
+      justify-content: space-between; /*Nos coloca el logo y el perfil con un espacio entre ellos*/
+      align-items: center;
+    }
+    .header__img {
+      width: 200px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+    .header__menu:hover ul, ul:hover {
+        display: block;
+    }
+    .header__menu li {
+        margin: 10px 0px;
+    }
+    .header__menu li a {
+        color: white;
+        text-decoration: none;
+    }
+    .header__menu li a:hover {
+        text-decoration: underline;
+    }
+    /*significa que img es un hijo de header y por lo tanto esto estiliza todas las imagenes
+    dentro del header*/
+    /*////////IMPORTANTEEEEEEEEEEE!!!! EL CSS no debe estar separado por comentarios entre las deficiones*/
+    .header__menu { /*De aqui hacia abajo esta todo lo del menu desplegable del perfil*/
+        margin-right: 20px;
+    }
+    .header__menu--profile {
+        margin-right: 8px;
+        
+        display: flex;
+        align-items: center;
+    }
+    .header__menu--profile img {
+        margin-right: 8px;
+        width: 40px;
+    }
+    .header__menu--profile p {
+        margin: 0px;
+        color: white;
+    }
+    .header__menu ul {
+        display: none;
+        list-style: none;
+        padding: 0px;
+        position: absolute;
+        width: 100px;
+        text-align: right;
+        margin: 0px 0px 0px -14px;
+    }
+    /*De aqui hacia abajo va todo lo del buscador principal*/
+    .main {
+        height: 300px;
+        text-align: center;
+    }
+    .main__title {
+        color: white;
+        font-size: 25px;
+    }
+    .input {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid white;
+        border-radius: 100px;
+        color: white;
+        font-family: 'Muli', sans-serif;
+        font-size: 16px;
+        height: 50px;
+        padding: 0px 20px;
+        width: 70%;
+        outline: none;
+    }
+    ::placeholder {
+        color: white;
+    }
+  </style>
+  <body>
+      <!--Este es el header utilizado para la maquetacion-principal-->
+    <header class="header">
+      <img class="header__img" src="/assets/logo-platzi-video-BW2.png"  />
+      <div class="header__menu">
+            <div class="header__menu--profile">
+                <img src="/assets/user-icon.png" alt="">
+                <p>Perfil</p>
+            </div>
+            <ul>
+                <li>
+                    <a href="/">Cuenta</a>
+                </li>
+                <li>
+                    <a href="">Cerrar Sesión</a>
+                </li>
+            </ul>
+      </div>
+    </header>
+    <section class="main">
+        <h2 class="main__title">Qué quieres ver hoy?</h2>
+        <input class="input" type="text" placeholder="Buscar...">
+    </section>
+  </body>
+</html>
