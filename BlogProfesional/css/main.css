@@ -39,3 +39,46 @@ header .header-icons-container .icons { /*Esto es para el div que contiene todos
 header .icons span {
     color: white;
 }
+/*Esta sección es donde va nuestro logo y el link a nuestro perfil*/
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 90px;
+}
+nav .nav-logo-container { /*el margen para nuestro logo*/
+    margin-left: 50px;
+}
+nav .nav-logo-container img {
+    width: 220px;
+    margin-top: 10px;
+}
+nav .profile-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+nav .profile-link a {
+    color: black;
+    border-bottom: 1px solid black;
+}
+/*Lo que sigue es el main de mi home*/
+.home-main {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 100%;
+}
+.home-main section { /*En esta sección se encuentra el texto y el boton*/
+    display: grid;
+    grid-column: 2;
+    justify-items: center;
+    height: 350px;
+    margin-top: 80px;
+}
+.home-main-text {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    color: black;
+    text-align: center;
+}
