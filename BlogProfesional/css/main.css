@@ -19,6 +19,10 @@ a { /*Esto es para todas la anclas 'a'*/
     right: 0;
     
 }
+.grid-container { /*delimitamos el tamaño del contenedor para que no importe la cantidad de pixeles de la pantalla desde donde se visualice*/
+    max-width: 980px;
+    margin: auto; /*divide el espacio entre el left y right para poder centrar*/ /*SUPER UTIL TODO ESTO*/
+}
 
 header {
     width: 100%;
@@ -144,4 +148,29 @@ nav .profile-link a {
     border: 1px solid #47cfac;
     padding: 10px 15px;
     font-size: 12px;
+}
+/*aqui van los articulos en miniatura*/
+.blogs-posts-container .post-container {
+    display: inline-block;
+    padding-left: 10px;
+    max-width: 30%;
+    margin-bottom: 50px;
+}
+.blogs-posts-container .post-container p {
+    margin-bottom: 35px;
+}
+.blogs-posts-container .post-container img {
+    width: 100%;
+}
+/*Lo que sigue es la parte del footer*/
+footer {
+    width: 100%;
+    height: 80px;
+    background-color: #22272d;
+    border-top: 35px solid #47cfac;
+    text-align: center; /*esto alinea en el centro a los hijos del footer*/
+}
+footer p {
+    color: white;
+    margin-top: 30px;
 }
