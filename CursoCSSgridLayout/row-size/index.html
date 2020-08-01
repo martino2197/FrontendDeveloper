@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamaño de item en filas</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(2, 200px); /*Esto es explicit grid */
+
+
+            /*Las siguiente lineas son utilizadas para darle espacio entre filas y columnas, utilizando la propiedad gap*/
+            /*column-gap: 30px;
+            row-gap: 50px;*/
+            /*gap: filas columnas;*/
+            gap: 5px;
+            height: 100vh;/*Con esto abarco toda la altura de mi container*/
+        }
+        .item {
+            background-color: lightblue;
+            padding: 10px;
+            border: 1px solid red;
+        }
+        .item:nth-of-type(1) { /*me toma el elemento de ese tipo, que yo le pase (1)*/
+            /*background-color: blue;*/
+            /*grid-column-start: 1; /*Le indicamos desde que linea empieza de la rejilla*/
+            /*grid-column-end: 3; /*Le indicamos en que linea de la rejilla termina*/
+            grid-column: 1 / span 3;
+            grid-row: 1 / span 2;
+
+        }
+        .item:nth-of-type(2) { /*me toma el elemento de ese tipo, que yo le pase (8)*/
+           /*grid-column: 2 / 4;*/
+           grid-column: 4 / span 2;
+           grid-row: 1 / span 2;
+        }
+
+        .item:nth-of-type(3) { 
+            /*grid-column: 2 / span 2; /*con span estoy especificando el numero de columnas que debe abarcar*/
+            /*grid-column: 1 / -1; /*De esta manera va a tomar todas las columnas*/
+            grid-column: 6 / span 2;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <!--.item{item #$}*12-->
+        <div class="item">item #1</div>
+        <div class="item">item #2</div>
+        <div class="item">item #3</div>
+        <div class="item">item #4</div>
+        <div class="item">item #5</div>
+
+    </section>
+</body>
+</html>
