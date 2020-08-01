@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Areas</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .container {
+            display: grid;
+            /*grid-template-columns: 25% 50% 25%;*/
+            /*grid-template-rows: 300px 150px;*/ /*Esto es explicit grid */
+
+            /*Grid explicito (explicit grid) es cuando nosotros definimos el numero de filas o columnas.
+            Grid implicito (implicit grid) es cuando tenemos filas o columnas que no definimos pero son parte de nuestro grid.*/
+
+            /*Otra forma de declarar las filas y columnas es la siguiente:*/
+            /*grid-template: filas / columnas;*/
+
+            /*Unidad de medida: fracciones fr distrubuye el espacio disponible en formas iguales.
+            Funciones:
+            repeat(cantidad, valor) para usar el mismo valor varias veces
+            minmax(min, max) agregar un valor minimo y maximo para el tamaño al hacer responsive*/
+            /*grid-template: 300px 100px 100px / 1fr 1fr 1fr;*/
+            /*grid-template: 300px 100px 100px / repeat(4, 1fr);*/
+            /*grid-template: 300px 100px 100px / repeat(4, minmax(min, max));*/
+            /*grid-template: 300px 100px 100px / repeat(4, minmax(200px, 1fr));*/
+            grid-template: 100px 1fr 150px / 200px 1fr;
+
+            /*Las siguiente lineas son utilizadas para darle espacio entre filas y columnas, utilizando la propiedad gap*/
+            /*column-gap: 30px;
+            row-gap: 50px;*/
+            /*gap: filas columnas;*/
+            gap: 10px;
+            height: 100vh;/*Con esto abarco toda la altura de mi container*/
+
+            /*Cada cosa dentro de las comillas corresponde a las areas que tenga esa fila
+            Un detalle importante es que cada palabra es una columna, por lo tanto la siguiente forma es para 3 filas 2 columnas*/
+            grid-template-areas: "header header" 
+                                 "left contenido" 
+                                 "footer footer";
+
+        }
+        .item {
+            background-color: lightblue;
+            padding: 10px;
+            border: 1px solid red;
+        }
+        .item:nth-of-type(4) { /*me toma el elemento de ese tipo, que yo le pase (4)*/
+            background-color: blue;
+            overflow: auto; /*obtenemos el scroll*/
+            /*display: subgrid;
+            display: inline-grid;
+            pendientes por estar disponible*/
+
+            display: grid;
+            grid-template: 50px 50px 50px / 200px 200px 200px;
+            
+        }
+        .item .item {
+            background-color: yellow;
+        }
+        .header {
+            grid-area: header; /*Esta propiedad es aplicada a los hijos de un grid container*/
+        }
+        .left {
+            grid-area: left;
+        }
+        .contenido {
+            grid-area: contenido;
+        }
+        .footer {
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="item header">header</div>
+        <div class="item left">left</div>
+        <div class="item contenido">contenido</div>
+        <div class="item footer">footer</div>
+    </section>
+</body>
+</html>
