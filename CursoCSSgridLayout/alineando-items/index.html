@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .container {
+            display: grid;
+            gap: 5px;
+            height: 100vh;/*Con esto abarco toda la altura de mi container*/
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+
+            justify-items: center; /*Nos va ayudar a hacer el alineado horizontal, por defecto: stretch*/
+            align-items: center;/*Nos va ayudar a hacer el alineado vertical, por defecto: stretch*/
+            /* start(Pone el contenido hacia la izquierda 'inicio' por lo general) end(Pone el contenido hacia la derecha 'end' por lo general) center(se va al medio 'center') stretch(Estirar nuestro contenido al espacio que nos de el grid) */
+        }
+        .item {
+            background-color: lightblue;
+            padding: 10px;
+            border: 1px solid red;
+        }
+        .item:nth-of-type(5) {
+            /*Muy parecidos al align-items y justify-items, pero en este caso el elemento se aplica la propiedad directamente a si mismo y no a su contenido*/
+            align-self: start;
+            justify-self: start;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <!--.item{item #$}*12-->
+        <div class="item">item #1</div>
+        <div class="item">item #2</div>
+        <div class="item">item #3</div>
+        <div class="item">item #4</div>
+        <div class="item">item #5</div>
+        <div class="item">item #6</div>
+        <div class="item">item #7</div>
+        <div class="item">item #8</div>
+        <div class="item">item #9</div>
+        <div class="item">item #10</div>
+        <div class="item">item #11</div>
+        <div class="item">item #12</div>
+
+    </section>
+</body>
+</html>
