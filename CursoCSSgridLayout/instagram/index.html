@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+        .post {
+            cursor: pointer;
+            position: relative;
+            display: block;
+            width: 200px;
+        }
+        .post-image {
+            margin: 0; /*Quitar el margen por defecto del figure*/
+        }
+        .post-image img {
+            width: 100%; /*Ocupa el mismo ancho de mi post*/
+            vertical-align: top; /*Un margen que sale a todas la imagenes cuando no se le pone vertical-align de ningun tipo*/
+        }
+        .post-overlay { /*aqui se muestra los likes y comentarios*/
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            left: 0; /*Que tome todo el espacio del padre o contenedor mas cercano que tenga position relativa*/
+            right: 0;
+            bottom: 0;
+            top: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .post:hover  .post-overlay {
+            display: flex;
+        }
+        .post-likes, .post-comments {
+            width: 80px;
+            margin: 5px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <section class="post-list">
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="compu.jpg" alt="">
+            </figure>
+            <div class="post-overlay">
+                <p>
+                    <span class="post-likes">150</span>
+                    <span class="post-comments">10</span>
+                </p>
+            </div>
+        </a>
+    </section>
+</body>
+</html>
