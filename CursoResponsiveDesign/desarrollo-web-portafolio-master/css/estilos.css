@@ -332,7 +332,16 @@ figure {
 
 .container {
   /* border: 1px solid red; */
-  max-width: 1000px; /*RESPONSIVE DESIGN*/
+
+  /*RESPONSIVE DESIGN*/
+  max-width: 1000px; 
+
+  /* width: 100%; */
+  flex: 1; /*Que el elemento tome el ancho disponible que tenga dentro del elemento, en vez de width: 100%*/
+
+  /*RESPONSIVE DESIGN*/
+
+
   /* width: 1000px; */
   margin: 0 auto;
   display: inherit;
@@ -348,9 +357,22 @@ figure {
 
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    /* border: 10px solid green; */
+@media screen and (max-width: 767px) { /*767 para que resoluciones mas bajas que un ipad tomen esta media querie*/
+  .header {
+    display: block; /*cambiamos de flex a block*/
+    height: auto; /*quitamos la altura de 70px y ponemos auto a la propiedad*/
+  }
+  .header ol {
+    display: block; /*Cambiamos el display flex con initial para que regrese al por defecto: inline*/
+  }
+  .header ol li {
+    height: 50px;
+  }
+  .header a {
+    justify-content: center;
+  }
+  .header .logo {
+    text-align: center;
   }
 }
 
