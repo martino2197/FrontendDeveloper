@@ -77,6 +77,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
 
+  flex-wrap: wrap; /*RESPONSIVE DESIGN*/
 }
 
 .hero-image{
@@ -115,6 +116,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  flex-wrap: wrap; /*RESPONSIVE DESIGN*/
 }
 .project-course,
 .project-date,
@@ -153,6 +156,10 @@ h2 {
   height: 70px;
   align-items: center;
   justify-content: space-between;
+
+
+  flex-wrap: wrap; /*RESPONSIVE DESIGN*/
+
 }
 
 ol,
@@ -209,6 +216,8 @@ figure {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  flex-wrap: wrap; /*RESPONSIVE DESIGN*/
 }
 
 .footer img {
@@ -221,7 +230,7 @@ figure {
 
 .event-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /*NOS AYUDA A QUE LOS ELEMENTOS CON DISPLAY FLEX (LOS HIJOS), SE APILEN UNO ABAJO DEL OTRO CUANDO YA NO HAY ESPACIO EN EL CONTENEDOR. SIN ESTA PROPIEDAD LOS HIJOS DE COLOCARIAN UNO AL LADO DEL OTRO.*/
 }
 .event-list-title {
   margin-left: 20px;
@@ -266,6 +275,8 @@ figure {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  flex-wrap: wrap; /*RESPONSIVE DESIGN*/
 }
 
 .social {
@@ -321,7 +332,8 @@ figure {
 
 .container {
   /* border: 1px solid red; */
-  width: 1000px;
+  max-width: 1000px; /*RESPONSIVE DESIGN*/
+  /* width: 1000px; */
   margin: 0 auto;
   display: inherit;
   justify-content: inherit;
@@ -338,7 +350,7 @@ figure {
 
 @media screen and (max-width: 768px) {
   body {
-    border: 10px solid green;
+    /* border: 10px solid green; */
   }
 }
 
