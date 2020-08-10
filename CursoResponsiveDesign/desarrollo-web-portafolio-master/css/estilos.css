@@ -371,9 +371,39 @@ figure {
     padding: 0 0.8em; /*De esta manera cuando estemos en modo responsive nuestro contenedor va a tener y heredar a sus hijos un padding de 0.8em para que no esten tan pegado el contenido hacia los lateraless*/
   }
 
+  .hero {
+    height: auto; /*le damos una altura en auto a nuesto hero*/
+    position: relative; /*Las funciones absolutas tienen que ser relativas a algo, por eso le damos una position relative a hero, ya que hero-image tiene position absolute*/
+
+    overflow: hidden; /*Que este oculto lo desbordado, en este caso se trata de la imagenx*/
+    padding: 2em; /*Para que las dentro del hero tengan espacio a su alrededor*/
+  }
+  /*empleamos css position y dejamos volando hacia atras la imagen dentro del hero*/
+  .hero-image {
+    position: absolute;
+    z-index: 1; /*Este z-index es menor al de h1 y por lo tanto va a estar por debajo del texto*/
+
+    /*Con esto logramos que el elemento se estire en todas sus direcciones*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; 
+    /*Con esto logramos que el elemento se estire en todas sus direcciones*/
+
+    width: 100%; /*Forzamos su tamaño para que ocupe todo su contenedor*/
+    
+  }
+  h1 {
+    font-size: 2em;
+    z-index: 2; /*Este z-index es mayor al de hero-image y por lo tanto va a estar por encima de la imagen*/
+  }
+  /*empleamos css position y dejamos volando hacia atras la imagen dentro del hero*/
+
 }
 
 @media screen and (max-width: 767px) { /*767 para que resoluciones mas bajas que un ipad tomen esta media querie*/
+  
+
   .header {
     display: block; /*cambiamos de flex a block*/
     height: auto; /*quitamos la altura de 70px y ponemos auto a la propiedad*/
@@ -444,6 +474,10 @@ figure {
 }
 
 @media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
   .project-details {
     font-size: 12px;
   }
@@ -475,5 +509,10 @@ figure {
 }
 
 @media screen and (max-width: 320px) {
-  
+  h1 {
+    font-size: 1.2em;
+  }
+  .hero {
+    padding: 2em 1em;
+  }
 }
