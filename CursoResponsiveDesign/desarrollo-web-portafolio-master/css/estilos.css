@@ -156,6 +156,8 @@ h2 {
   max-width: 100%;
 }
 /*RESPONSIVE DESIGN para imagenes dentro de un container*/
+
+
 .header {
   background-color: #1b2127;
   color: white;
@@ -243,8 +245,12 @@ figure {
   margin-left: 20px;
 }
 .event { 
-  margin: 10px;
-  width: 480px;
+  margin: 1%; /*RESPONSIVE DESIGN*/
+  width: 48%; /*RESPONSIVE DESIGN*/
+
+  /* margin: 10px;
+  width: 480px; */
+
   flex-shrink: 0;
   border-radius: 10px;
   overflow: hidden;
@@ -419,11 +425,29 @@ figure {
   }
   /*Margin responsive*/
 
+  .event {
+    width: auto;
+    flex-shrink: initial; /* Esta propiedad sirve para que el elemento no haga ningun tipo de resize y es una propiedad que se hereda desde los paadres que tienen display flex. El initial para resetearlo es para quitar esa propiedad, tambien podria darle un valor de 1.*/
+  }
+  .event img { /*Cuando agregamos una medida a un selector hijo de etiqueta, y queremos hacer una configuración posterior pero con el selector de clase, el selector de etiqueta prevalece y vale más, por lo que se debe hacer la reconfiguración con el selector de etiqueta. Ej: .event-image valdra en este caso menos que .event img*/
+    width: 100%;
+    /*Extras de la comunidad*/
+    max-height: 250px;
+    object-position: 25% 25%;
+    /*enfocar la imagen en la cara de Leonidas*/
+    /*Extras de la comunidad*/
+  }
+
 }
 
 @media screen and (max-width: 480px) {
   .project-details {
     font-size: 12px;
+  }
+
+  .event-detail {
+    margin: -2em 0.5em 0.5em; /*Hacemos los margenes de forma relativa Top Right Bottom (left: toma el mismo de Right)*/
+    padding: 1em;
   }
 }
 
