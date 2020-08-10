@@ -367,6 +367,9 @@ figure {
 /* desktop first que empieces desde el MQ más grande */
 
 @media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 0.8em; /*De esta manera cuando estemos en modo responsive nuestro contenedor va a tener y heredar a sus hijos un padding de 0.8em para que no esten tan pegado el contenido hacia los lateraless*/
+  }
 
 }
 
@@ -448,6 +451,26 @@ figure {
   .event-detail {
     margin: -2em 0.5em 0.5em; /*Hacemos los margenes de forma relativa Top Right Bottom (left: toma el mismo de Right)*/
     padding: 1em;
+  }
+
+  .contact {
+    height: auto; /*Hacemos que la altura de contacto cambien cuando este por debajo de 480px*/
+    padding: 1em 0px; /* le damos un margin top y un margin bottom */
+    display: block; /*Cambiamos el display flex por un display block para poder usar la propiedad text-align: ;*/
+    text-align: center; /*centramos nuestro contenido*/
+  }
+  .form-email button { /*nuestro boton aun no se centra debido a que apesar de que el display es block el boton no tiene margenes y por eso no puede centrarse*/
+    margin: 1em auto; /*Le damos margenes  a nuestro boton y de esta manera logramos centrarlo.*/
+  }
+  .form-email h3 {
+    margin-top: 0; /*Quitamos el margen superio de ese titulo para que coincidan los margenes de arriba y de abajo*/
+  }
+  .footer {
+    display: block; /*Cambiamos el display flex por un block para que nuestros elementos se empiecen a apilar de forma automatica*/
+    text-align: center; /*Centramos nuestros elementos del footer*/
+    /*lo anterior nos causo un problema con los margenes, aqui abajo vienen varias soluciones posibles*/
+    /* padding: 1px; */
+    border: 1px solid transparent;
   }
 }
 
