@@ -142,13 +142,20 @@ h2 {
 
 
 .project-details {
-  width: 500px;
+  /* width: 500px; */
+  width: 50%; /*RESPONSIVE DESIGN*/
 }
 
 .project-imageContainer {
-  width: 500px;
+  /* width: 500px; */
+  width: 50%; /*RESPONSIVE DESIGN*/
 }
 
+/*RESPONSIVE DESIGN para imagenes dentro de un container*/
+.project-imageContainer img {
+  max-width: 100%;
+}
+/*RESPONSIVE DESIGN para imagenes dentro de un container*/
 .header {
   background-color: #1b2127;
   color: white;
@@ -374,10 +381,50 @@ figure {
   .header .logo {
     text-align: center;
   }
+  
+  .project { /*De esta manera al momento de pasar a una pantalla mas pequeña que la de un ipad vamos a poner el texto encima de la imagen del, lo que sigue es ajustar estos elementos a su nueva posición*/
+    display: block; /*NOTA: SIEMPRE ES MEJOR TENER UN DISPLAY: BLOCK PARA EL RENDIMIENTO DE RENDER DENTRO DEL NAVEGADOR*/
+  }
+  .project-imageContainer { /*De esta manera el contenedor de la imagen va abarcar el todo el ancho de su contenedor padre y la imagen se ajustara hacia el centro*/
+    width: auto; /*NOTA: SIEMPRE ES MEJOR WIDTH: AUTO QUE WIDTH: 100%* PARA EL RENDIMIENTO DE RENDER DENTRO DEL NAVEGADOR*/
+    text-align: center;
+  }
+  .project-details { /*De esta manera el contenedor del texto va abarcar el todo el ancho de su contenedor padre y el texto se ajustara en el nuevo ancho*/
+    width: auto; /*NOTA: SIEMPRE ES MEJOR WIDTH: AUTO QUE WIDTH: 100%* PARA EL RENDIMIENTO DE RENDER DENTRO DEL NAVEGADOR*/
+    font-size: 16px;
+  }
+  /*font-size responsive*/
+  .project-title {
+    font-size: 1.5em;
+    margin-bottom: 0.4em; /*Margin responsive*/
+  }
+  .project-course {
+    font-size: 1.1em;
+  }
+  .project-date {
+    font-size: 1em;
+  }
+  .project-url {
+    font-size: 1em;
+  }
+  .project-description {
+    font-size: 0.8em;
+  }
+  /*font-size responsive*/
+
+  /*Margin responsive*/
+  .project-course, .project-date, .project-url {
+    /* margin: 10px 0; */
+    margin: 0.4em 0;
+  }
+  /*Margin responsive*/
+
 }
 
 @media screen and (max-width: 480px) {
-  
+  .project-details {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 320px) {
