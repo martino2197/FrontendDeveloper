@@ -365,6 +365,11 @@ figure {
 }
 
 /* desktop first que empieces desde el MQ más grande */
+.html-video {
+  width: 100%;
+  height: auto;
+  /* max-width: 100%; */
+}
 
 @media screen and (max-width: 1024px) {
   .container {
