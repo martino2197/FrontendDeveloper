@@ -171,14 +171,25 @@
       console.log('Hola mundo');
       /*console.log(document.querySelector('.menu')); Hace un selector dentro de js*/
       // document.querySelector('.menu').classList.add('is-active');
+
+      /*window.matchMedia('screen and (max-width: 767px)'); Esta es la forma de hacer un media querie en javascript*/
+      const ipad = window.matchMedia('screen and (max-width: 767px)');
+
       const menu = document.querySelector('.menu');
-      console.log(menu);
+      // console.log(menu);
       const burgerButton = document.querySelector('#burger-menu');
-      console.log(burgerButton);
-      
+      // console.log(burgerButton);
 
-      burgerButton.addEventListener('click', hideShow) /*Le agregago el evento al burgerButton ('evento', 'Que hara con ese evento')*/
 
+      ipad.addListener(validation) /*Le agregamos el Listener que estara al pediente de que se entre o no al media query*/
+
+      function validation(event) { /*el event es nuestra media querie*/
+        if (event.matches) {
+          burgerButton.addEventListener('click', hideShow) /*Le agregamos el evento al burgerButton ('evento', 'Que hara con ese evento')*/
+        } else {
+          burgerButton.removeEventListener('click', hideShow) /*Le removemos el evento al burgerButton ('evento', 'Que hara con ese evento')*/
+        }
+      }
 
       function hideShow() {
         if (menu.classList.contains('is-active')) {
@@ -186,6 +197,13 @@
         } else {
           menu.classList.add('is-active'); /*de esta manera le estamos agregando la clase 'is-active'*/
         }
+
+
+      /*Lo de abajo es otra forma de hacerlo*/
+      // burgerButton.addEventListener('click', function() {
+	    //   menu.classList.toggle('is-active') Con menu.classList.toggle lo que quiere decir es: si tienes la clase, borrala, si no la tiene agregala.
+      // })
+
       }
     </script> <!--De esta manera podemos tener javascript dentro del html --> 
   </body>
