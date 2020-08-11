@@ -465,7 +465,12 @@ figure {
 
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
+
+  .event-list-title {
+    margin-left: 0;
+  }
+
   .portfolio {
     padding: 0;
   }
@@ -505,6 +510,12 @@ figure {
 }
 
 @media screen and (max-width: 767px) { /*767 para que resoluciones mas bajas que un ipad tomen esta media querie*/
+
+  h2 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+  }
+
   
   .burger-button {
     display: block; /*PARA QUE SE MUESTRE EL BOTON DE MENU*/
@@ -581,7 +592,7 @@ figure {
     font-size: 1em;
   }
   .project-description {
-    font-size: 0.8em;
+    font-size: 1em;
   }
   /*font-size responsive*/
 
@@ -613,7 +624,7 @@ figure {
   }
 
   .project-details {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .event-detail {
@@ -639,6 +650,12 @@ figure {
     /*lo anterior nos causo un problema con los margenes, aqui abajo vienen varias soluciones posibles*/
     /* padding: 1px; */
     border: 1px solid transparent;
+  }
+
+  .social-link { /*Aqui redimensionamos los iconos de redes sociales*/
+    width: 40px;
+    height: 40px;
+    background-size: 100%; /*con esta linea el backgroud abarcara los 40px de ancho y de alto*/
   }
 }
 
