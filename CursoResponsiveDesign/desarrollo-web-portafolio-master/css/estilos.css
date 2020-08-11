@@ -518,11 +518,39 @@ figure {
   }
   .header a {
     justify-content: center;
+    height: 50px; /*Aqui va el estilo del texto del  menu*/
+    font-size: 2em;
+    text-decoration: underline;
+    margin-bottom: 0.5em;
   }
   .header .logo {
     text-align: center;
   }
-  
+
+  .menu {
+    position: fixed;
+    background-color: rgba(5, 111, 255, 0.9);
+    z-index: 3;
+    top: 0; /*comienza desde arriba sin ningun margen*/
+    /* left: 0; comienza desde la izquierda sin ningun margen */
+    width: 100vw; /*De esta manera el menu abarca el 100% de ancho del viewport*/
+    /* height: 100vh; De esta manera el menu abarca el 100% de alto del viewport */
+    bottom: 0; /*Esta es otra forma de abarcar toda la altura*/
+    /*Centramos los elementos de nuestro menu*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /**/
+    left: -100vw; /*esto es para ocultar nuestro menu hacia la izquierda y que no este visible*/
+
+    transition: 0.3s;
+  }
+  .menu.is-active { /*Cuando ponemos . y sin espacios ponemos el otro punto, cuando el elemnto tenga las dos clases*/
+
+    left: 0; /*comienza desde la izquierda sin ningun margen*/
+  }
+
   .project { /*De esta manera al momento de pasar a una pantalla mas pequeña que la de un ipad vamos a poner el texto encima de la imagen del, lo que sigue es ajustar estos elementos a su nueva posición*/
     display: block; /*NOTA: SIEMPRE ES MEJOR TENER UN DISPLAY: BLOCK PARA EL RENDIMIENTO DE RENDER DENTRO DEL NAVEGADOR*/
   }
