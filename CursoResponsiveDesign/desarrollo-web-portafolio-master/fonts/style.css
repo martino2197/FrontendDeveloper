@@ -1,0 +1,39 @@
+@font-face { /*Gracias a este modulo de css nosotros podemos crear fuentes personalizadas*/
+  font-family: 'icomoon'; /*Este es el nombre de la fuente*/
+  /* Lo que sigue es ver que fuente se va aplicar dependiendo de cada tipo de navegador */
+  src:  url('fonts/icomoon.eot?fynqng');
+  src:  url('fonts/icomoon.eot?fynqng#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fynqng') format('truetype'),
+    url('fonts/icomoon.woff?fynqng') format('woff'),
+    url('fonts/icomoon.svg?fynqng#icomoon') format('svg');
+  /* Lo que sigue es ver que fuente se va aplicar dependiendo de cada tipo de navegador */
+
+  /*Va el tipo y estilo de la fuente*/
+  font-weight: normal; 
+  font-style: normal;
+  font-display: block;
+}
+
+/*Este selecto es avanzado, 'Cualquier elemento que tenga una clase que empiece con icon- o cualquier clase que en alguna parte de su nombre tenga un icon-'*/
+/*Ejemplo: icon-menu o button-icon-menu*/
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important; /*Les asigna este font-family*/
+  speak: never; /*Porque solo va a ser un icono*/
+  /*Aqui van los tipos de fuente que va asignarse */
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*Estas lineas son para el renderizado de la fuente*/
+}
+
+/*Cada icono que vamos a tener lo va a generar una clase como esta*/
+.icon-menu:before {
+  content: "\e900"; /*va insertar un content con esta entidad html*/
+}
