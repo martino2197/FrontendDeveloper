@@ -191,6 +191,9 @@
         }
       }
 
+      validation(ipad) /*ESTA LINEA ARREGLA EL BUG QUE HACIA QUE EL BOTON DE MENU NO FUNCIONARA CUANDO APARECIA YA EN MODO RESPONSIVE SIN HACER NINGUNA REDIMENSION*/
+
+
       function hideShow() {
         if (menu.classList.contains('is-active')) {
           menu.classList.remove('is-active'); /*de esta manera le estamos quitando la clase 'is-active'*/

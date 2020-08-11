@@ -466,6 +466,10 @@ figure {
 }
 
 @media screen and (max-width: 1024px) {
+  .portfolio {
+    padding: 0;
+  }
+
   .container {
     padding: 0 0.8em; /*De esta manera cuando estemos en modo responsive nuestro contenedor va a tener y heredar a sus hijos un padding de 0.8em para que no esten tan pegado el contenido hacia los lateraless*/
   }
