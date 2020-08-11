@@ -19,7 +19,7 @@
         La escala inicial del viewport va a ser del 100% = 1-->
   </head>
   <body>
-    <i class="icon-menu burger-button"></i> <!--Se recomienda usar la etiqueta i para iconos-->
+    <i class="icon-menu burger-button" id="burger-menu"></i> <!--Se recomienda usar la etiqueta i para iconos-->
 
     <header class="header">
       <div class="container">
@@ -167,5 +167,26 @@
         </div>
       </div>
     </footer>
+    <script> 
+      console.log('Hola mundo');
+      /*console.log(document.querySelector('.menu')); Hace un selector dentro de js*/
+      // document.querySelector('.menu').classList.add('is-active');
+      const menu = document.querySelector('.menu');
+      console.log(menu);
+      const burgerButton = document.querySelector('#burger-menu');
+      console.log(burgerButton);
+      
+
+      burgerButton.addEventListener('click', hideShow) /*Le agregago el evento al burgerButton ('evento', 'Que hara con ese evento')*/
+
+
+      function hideShow() {
+        if (menu.classList.contains('is-active')) {
+          menu.classList.remove('is-active'); /*de esta manera le estamos quitando la clase 'is-active'*/
+        } else {
+          menu.classList.add('is-active'); /*de esta manera le estamos agregando la clase 'is-active'*/
+        }
+      }
+    </script> <!--De esta manera podemos tener javascript dentro del html --> 
   </body>
 </html>
