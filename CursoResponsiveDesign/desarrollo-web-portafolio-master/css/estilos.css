@@ -437,6 +437,34 @@ figure {
   position: relative; /*Las funciones absolutas tienen que ser relativas a algo, por eso le damos una position relative a flexible-video, ya que youtube-video tiene position absolute*/
 }
 
+
+
+.burger-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  /*Centrar el icono dentro del circulo*/
+  display: none; /*PARA QUE NO SE MUESTRE POR DEFECTO*/
+  line-height: 40px;
+  text-align: center;
+  /*tambien se puede hacer de la sig. manera*/
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /*Centrar el icono dentro del circulo*/
+
+  /*Lo siguiente es para que nuesto icono nos pueda seguir durante el scroll*/
+  position: fixed;
+  z-index: 4;
+  left: 5px;
+  top: 5px;
+
+  color: white; /*Ya que es una fuente le podemos poner color al icono*/
+  /* font-size: 50px; */
+
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     padding: 0 0.8em; /*De esta manera cuando estemos en modo responsive nuestro contenedor va a tener y heredar a sus hijos un padding de 0.8em para que no esten tan pegado el contenido hacia los lateraless*/
@@ -474,6 +502,9 @@ figure {
 
 @media screen and (max-width: 767px) { /*767 para que resoluciones mas bajas que un ipad tomen esta media querie*/
   
+  .burger-button {
+    display: block; /*PARA QUE SE MUESTRE EL BOTON DE MENU*/
+  }
 
   .header {
     display: block; /*cambiamos de flex a block*/
