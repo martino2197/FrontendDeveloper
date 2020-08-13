@@ -1,5 +1,6 @@
 -var titulo = "Título Principal"
 -var titulos = ["Titulo Principal", "Subtitulo 1", "Subtitulo 2", "Subtitulo 3"]
+-var usuario = "Martin"
 doctype html
 html(lang="en")
     head
@@ -10,7 +11,10 @@ html(lang="en")
     body
         header
             h1 PlatziGames
-            a.boton Registro
+            if usuario
+                a Hola #{usuario}
+            else
+                a.boton Registro
         section.intro
             div.intro__imagen: img(src="images/imagen.png")
                 //- img(src="images/imagen.png") Esta es la forma en que indicariamos que es un hijo del div, pero arriba tenemos la forma por medio de la interpolacion
@@ -24,6 +28,9 @@ html(lang="en")
                     | recusandae illum beatae deleniti numquam voluptatum doloribus odio!
                     span Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati cupiditate corrupti ex tempore nisi qui minima magnam quod rerum nostrum esse, repellat nemo optio atque amet dolore! Voluptatibus, dolore enim.
                 a.boton Leer Mas
+        ul
+            each titulo in titulos
+                li #{titulo}
 
 
 
