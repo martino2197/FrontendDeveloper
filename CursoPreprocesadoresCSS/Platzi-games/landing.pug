@@ -1,3 +1,5 @@
+-var titulo = "Título Principal"
+-var titulos = ["Titulo Principal", "Subtitulo 1", "Subtitulo 2", "Subtitulo 3"]
 doctype html
 html(lang="en")
     head
@@ -13,7 +15,8 @@ html(lang="en")
             div.intro__imagen: img(src="images/imagen.png")
                 //- img(src="images/imagen.png") Esta es la forma en que indicariamos que es un hijo del div, pero arriba tenemos la forma por medio de la interpolacion
             .intro__contenido
-                h2 Titulo Principal
+                //- h2= titulo
+                h2 #{titulos[0]}
                 p
                     | Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     | Inventore similique deleniti non minus perferendis recusandae 
