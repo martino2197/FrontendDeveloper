@@ -1,27 +1,6 @@
--var titulo = "Título Principal"
--var titulos = ["Titulo Principal", "Subtitulo 1", "Subtitulo 2", "Subtitulo 3"]
--var usuario = "Martin"
-mixin caja(imagen, titulo, contenido)
-    .caja
-        .caja__imagen: img(src="images/"+imagen)
-        .caja__contenido
-            h3=titulo
-            p=contenido
-
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="css/ejercicio-pug.css")
-        title Pug
-    body
-        header
-            h1 PlatziGames
-            if usuario
-                a Hola #{usuario}
-            else
-                a.boton Registro
+//- La diferencia entre el include y el extend es que el include solo pone el codigo como estaba y el extend te permite agregar codigo adicional
+extend componentes/plantilla.pug
+block contenidos
         section.intro
             div.intro__imagen: img(src="images/imagen.png")
                 //- img(src="images/imagen.png") Esta es la forma en que indicariamos que es un hijo del div, pero arriba tenemos la forma por medio de la interpolacion
@@ -43,6 +22,9 @@ html(lang="en")
             +caja('imagen.png', titulos[2], 'Lorem ipsum dolor')
             +caja('imagen.png', titulos[3], 'Lorem ipsum dolor')
             //- Esta es la forma de llamar a un mixin y pasarle parametros
+            //- Tambien lo podriamos hacer de la siguiente manera:
+            //- each titulo in titulos
+            //-     +caja("imagen.png", titulo, 'Lorem ipsum dolor sit amet consectetur adipisicing elit')    
             
 
 
