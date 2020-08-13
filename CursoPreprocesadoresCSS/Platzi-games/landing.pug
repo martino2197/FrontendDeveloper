@@ -1,6 +1,13 @@
 -var titulo = "Título Principal"
 -var titulos = ["Titulo Principal", "Subtitulo 1", "Subtitulo 2", "Subtitulo 3"]
 -var usuario = "Martin"
+mixin caja(imagen, titulo, contenido)
+    .caja
+        .caja__imagen: img(src="images/"+imagen)
+        .caja__contenido
+            h3=titulo
+            p=contenido
+
 doctype html
 html(lang="en")
     head
@@ -31,6 +38,12 @@ html(lang="en")
         ul
             each titulo in titulos
                 li #{titulo}
+        main.contenido
+            +caja('imagen.png', titulos[1], 'Lorem ipsum dolor')
+            +caja('imagen.png', titulos[2], 'Lorem ipsum dolor')
+            +caja('imagen.png', titulos[3], 'Lorem ipsum dolor')
+            //- Esta es la forma de llamar a un mixin y pasarle parametros
+            
 
 
 
