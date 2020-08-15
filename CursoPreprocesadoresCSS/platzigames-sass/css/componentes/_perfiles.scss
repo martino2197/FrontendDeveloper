@@ -1,0 +1,49 @@
+.perfil {
+    width: 50%;
+    padding-top: 50px;
+    color: $color-claro;
+    background-color: $color-secundario;
+    /*sass nos permite realizar la anidacion para indicar que es un hijo del elemento*/
+    &__avatar { /*&__avatar indica al preprocesador de que solo es una extension de la clase padre .perfil__avatar*/ 
+        display: block;
+        margin: 0 auto; /*con auto estamos centrando*/
+        border-radius: 50em;
+    }
+    &__nombre {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 20px;
+        font-family: $Fuente2;
+    }
+    &__titulo {
+        // display: block;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+        font-size: 12px;
+    }
+    &__boton {
+        display: block;
+        width: 100px;
+        height: 40px;
+        margin: 15px auto; /*con auto estamos centrando*/
+        padding-top: 15px;
+        border-radius: 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: $Fuente2;
+        color: $color-claro;
+    }
+} 
+
+.perfil__minibio {
+    margin: 0 auto;
+    padding-top: 20px;
+    h2 {
+        @extend .perfil__nombre; /*De esta manera h2 va obtener el mismo estilo del h2 con la clase ".perfil__nombre" */
+    }
+    h3 {
+        @extend .perfil__titulo; /*De esta manera h2 va obtener el mismo estilo del h2 con la clase ".perfil__titulos" */
+    }
+}
