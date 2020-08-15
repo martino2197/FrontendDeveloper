@@ -13,6 +13,10 @@ $color-variacion: #3f579a;
     background-color: $color-claro;
 }
 
+@function get-opacity($color, $nivel) {
+    @return rgba($color, $nivel);
+}
+
 * {
     box-sizing: border-box; /*Con el box-sizing a todos los elementos de nuestra pagina nos aseguramos de no tener problemas despues con los margins ni con los paddings*/
 }
