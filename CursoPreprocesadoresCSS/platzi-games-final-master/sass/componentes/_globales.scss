@@ -29,6 +29,18 @@ $color-claro: #FFF;
 	}
 }
 
+/*Mixin de la comunidad de SASS*/
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+	font-size: $size; /*mandamos el tamano de la letra*/
+	font-size: calculateRem($size); /*calculateRem() dependiendo el tamano en pixeles que le mandas como parametro, hace el calculo a rem*/
+	line-height: calculateRem($size)* 1.5; /*calcula el line-height basado en el tamano de nuestra fuente;*/
+}
+/*Mixin de la comunidad de SASS*/
 
 // Funciones
 @function get-opacity($color, $amount) {
@@ -48,6 +60,7 @@ body {
 	background-color: #F9FAFC;
 	color: $color-primario;
 	@include titulos($Fuente1);
+	@include font-size(18px);
 }
 
 main {

@@ -444,6 +444,8 @@ output {
 [hidden] {
   display: none !important;
 }
+/*Mixin de la comunidad de SASS*/
+/*Mixin de la comunidad de SASS*/
 h1 {
   font-size: 30px;
   font-family: "Oswald", sans-serif;
@@ -473,6 +475,12 @@ body {
   background-color: #F9FAFC;
   color: #333333;
   font-family: "Lato", sans-serif;
+  font-size: 18px;
+  /*mandamos el tamano de la letra*/
+  font-size: 1.125rem;
+  /*calculateRem() dependiendo el tamano en pixeles que le mandas como parametro, hace el calculo a rem*/
+  line-height: 1.6875rem;
+  /*calcula el line-height basado en el tamano de nuestra fuente;*/
 }
 
 main {
@@ -790,6 +798,80 @@ main {
   width: 90%;
   margin: 0 auto;
   padding: 30px 0;
+}
+
+.caja--con-fondo {
+  display: block;
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  background-color: #333333;
+}
+.caja--con-fondo img {
+  /*esta sera la imagen de nuestra caja*/
+  display: block;
+  max-width: 100%;
+  max-height: auto;
+  position: absolute;
+  opacity: 0.5;
+  object-fit: contain;
+  /*abarque todo el contenedor de nuestra caja grande*/
+}
+.caja--con-fondo__contenido {
+  /*Esto va encima de la imagen*/
+  padding: 20px;
+  position: absolute;
+  text-align: center;
+  color: #FFF;
+}
+.caja--con-fondo__contenido p {
+  color: #FFF;
+}
+.caja--con-fondo__contenido h3 {
+  color: #FFF;
+}
+.caja--con-fondo__categoria {
+  display: block;
+  width: auto;
+  max-width: 100px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #8841DA;
+  color: #FFF;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.caja--grande {
+  max-width: 1000px;
+  height: 550px;
+  margin-right: 20px;
+  /*El espaciado con las otras cajas*/
+}
+.caja--grande h2 {
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px;
+  /*mandamos el tamano de la letra*/
+  font-size: 3.125rem;
+  /*calculateRem() dependiendo el tamano en pixeles que le mandas como parametro, hace el calculo a rem*/
+  line-height: 4.6875rem;
+  /*calcula el line-height basado en el tamano de nuestra fuente;*/
+}
+.caja--grande .caja--con-fondo__contenido {
+  padding-top: 200px;
+}
+
+.caja--mediana {
+  max-width: 600px;
+  height: 250px;
+}
+
+.caja--pequena {
+  max-width: 300px;
+  height: 250px;
 }
 
 .buscador {
