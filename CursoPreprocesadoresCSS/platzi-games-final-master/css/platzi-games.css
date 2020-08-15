@@ -444,6 +444,8 @@ output {
 [hidden] {
   display: none !important;
 }
+/* Media Queries Mixin
+**********************/
 /*Mixin de la comunidad de SASS*/
 /*Mixin de la comunidad de SASS*/
 h1 {
@@ -582,6 +584,30 @@ main {
 }
 .estadistica--articulos span {
   margin-left: 10px;
+}
+
+.caja--con-fondo__stats {
+  margin: 0 auto;
+  /*centrado*/
+  position: absolute;
+  /*que sobresalga por encima de la imagen de fondo*/
+  bottom: 10px;
+  border-top: none;
+  text-align: center;
+}
+.caja--con-fondo__stats ul {
+  display: flex;
+}
+.caja--con-fondo__stats li {
+  display: flex;
+  margin-right: 50px;
+  opacity: 0.8;
+}
+.caja--con-fondo__stats i {
+  color: #FFF;
+}
+.caja--con-fondo__stats span {
+  color: #FFF;
 }
 
 .ubicacion--perfil {
@@ -933,8 +959,9 @@ main {
 }
 
 .nav--header ul {
-  display: flex;
+  display: none;
   padding-top: 35px;
+  /*Recomendacion: cualquier media querie la agrego al final*/
 }
 .nav--header ul li {
   list-style: none;
@@ -946,11 +973,18 @@ main {
   text-transform: uppercase;
   font-weight: 700;
 }
+@media only screen and (min-width: 992px) {
+  .nav--header ul {
+    /*Cuando mi pantalla este una version desktop-s*/
+    display: flex;
+  }
+}
 
 .header__busqueda {
-  display: flex;
+  display: none;
   margin-left: auto;
   padding-top: 35px;
+  /*Recomendacion: cualquier media querie la agrego al final*/
 }
 .header__busqueda:hover {
   text-decoration: none;
@@ -965,6 +999,12 @@ main {
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
+}
+@media only screen and (min-width: 992px) {
+  .header__busqueda {
+    /*Cuando mi pantalla este una version desktop-s*/
+    display: flex;
+  }
 }
 
 .footer--principal {
@@ -1010,13 +1050,20 @@ main {
 }
 
 .contenedor--home {
-  height: 1200px;
-  width: 1300px;
-  margin: 0 auto;
-  /*alineado al centro*/
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 992px) {
+  .contenedor--home {
+    height: 1200px;
+    width: 1300px;
+    margin: 0 auto;
+    /*alineado al centro*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .caja--grande {
