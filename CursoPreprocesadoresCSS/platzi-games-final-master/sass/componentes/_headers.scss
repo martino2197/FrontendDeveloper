@@ -48,3 +48,21 @@
         display: flex;
     }
 } 
+
+.header__menu {
+    display: flex;
+    margin-left: auto;
+    padding-top: 35px;
+    &:hover {
+        text-decoration: none;
+    }
+    i {
+        font-size: 20px;
+        margin-right: 10px;
+        color: $color-primario;
+    }
+    /*Recomendacion: cualquier media querie la agrego al final*/
+    @include media(desktop-s) { /*Cuando mi pantalla este una version desktop-s*/
+        display: none;
+    }
+}
