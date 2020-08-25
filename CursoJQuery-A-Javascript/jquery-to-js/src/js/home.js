@@ -91,4 +91,36 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   })
   .catch(function() {
     console.log('algo falló');
-  })
+  });
+
+
+// Funciones asíncronas
+
+// Lo siguiente es equivalente al fetche que habiamos hecho anteriormente pero haciendolo en una funcion asincrona
+// Codigo asincrono que se lee de una manera sincrona
+(async function load() {
+  //await nos sirve para esperar las peticiones del api
+  //await
+  //Mi categorias son : action drama animation
+
+  async function getData(url) {
+    const response = await fetch(url) // voy a pausar mi aplicacion hasta que mi fetch termine
+    const data = await response.json() //recordemos que fetch nos retorna una promesa de forma nativa
+    return data
+  }
+
+  const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
+  const dramaList = await getData('https://yts.mx/api/v2/list_movies.json?genre=drama')
+  const animationList = await getData('https://yts.mx/api/v2/list_movies.json?genre=animation')
+  // let terrorList
+  // getData('https://yts.mx/api/v2/list_movies.json?genre=terror')
+  //   .then(function(data) {
+  //     console.log('terrorList', data);
+  //   })
+  console.log('actionList', actionList);
+  console.log('terrorList', dramaList);
+  console.log('animationList', animationList);
+  // console.log(actionList, dramaList, animationList );
+})()
+
+// load()
