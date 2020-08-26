@@ -121,6 +121,30 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   console.log('terrorList', dramaList);
   console.log('animationList', animationList);
   // console.log(actionList, dramaList, animationList );
+
+
+  /**Selectores */
+
+  // JQuery
+  // const $homeJQ = $('.home .list #item'); //elementos de la clase home
+
+  // Javascript vainilla
+  const $modal = document.getElementById('modal')
+  const $overlay = document.getElementById('overlay')
+  const $hideModal = document.getElementById('hide-modal')
+
+  const $sactionContainer = document.querySelector('#action')
+  const $dramaContainer = document.getElementById('#drama')
+  const $animationContainer = document.getElementById('#animation')
+
+  const $featuringContainer = document.getElementById('#featuring')
+  const $form = document.getElementById('#form')
+  const $home = document.getElementById('#home')
+
+  const $modalTitle = $modal.querySelector('h1')
+  const $modalImage = $modal.querySelector('img')
+  const $modalDescription = $modal.querySelector('p')
+
 })()
 
 // load()
