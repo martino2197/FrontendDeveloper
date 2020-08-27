@@ -130,6 +130,17 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   const $modalTitle = $modal.querySelector('h1')
   const $modalImage = $modal.querySelector('img')
   const $modalDescription = $modal.querySelector('p')
+
+  function setAttributes($element, attributes) {
+    // setAttributes($loader, {
+    //   src: 'src/images/loader.gif',
+    //   height: 50,
+    //   width: 50,
+    // })
+    for (const attribute in attributes) {
+      $element.setAttribute(attribute, attributes[attribute])
+    }
+  }
   
   $form.addEventListener('submit', (event) => {
     // debugger
@@ -140,6 +151,14 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     event.preventDefault(); //con esto le quitamos la accion por defecto que viene dentro del evento de submit
 
     $home.classList.add('search-active'); //De esta manera le colocamos la clase search-active a $home
+
+    const $loader = document.createElement('img'); //con esto podemos crear elementos como div, span, p, etc..
+    setAttributes($loader, {
+      src: 'src/images/loader.gif',
+      height: 50,
+      width: 50,
+    })
+    $featuringContainer.append($loader);
   })
 
   const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
