@@ -136,8 +136,10 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     //el formulario esta recargando cada vez que nosotros estamos haciendo submit de ese formulario
     //por defecto un formulario envia los datos de cada input que tenga atraves de un metodo llamado GET() o POST()
     //Esto sirve para que el backendo reciba este envio de informacion a cierta url
-    
+
     event.preventDefault(); //con esto le quitamos la accion por defecto que viene dentro del evento de submit
+
+    $home.classList.add('search-active'); //De esta manera le colocamos la clase search-active a $home
   })
 
   const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
@@ -178,10 +180,22 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
      /**Creación de DOM */
     }
 
+    function showModal() {
+      $overlay.classList.add('active')
+
+      $modal.style.animation = 'modalIn .8s forwards' // .style el cual nos permite cambiar y agregar estilos inline (< style=" "> por encima de nuestro archivo css)
+    }
+
     function addEventClick($element) {
       $element.addEventListener('click', () => {
-        alert('click')
+        // alert('click')
+        showModal()
       })
+    }
+
+    function hideModal() { //ocultamos el modal
+      $overlay.classList.remove('active'); 
+      $modal.style.animation = 'modalOut .8s forwards';
     }
   
     // console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
@@ -222,7 +236,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       });
     }
     
-
+    $hideModal.addEventListener('click', hideModal)
     
     renderMovieList(actionList.data.movies, $actionContainer);
     renderMovieList(dramaList.data.movies, $dramaContainer);
