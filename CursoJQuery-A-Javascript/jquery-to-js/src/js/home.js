@@ -123,6 +123,33 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   // console.log(actionList, dramaList, animationList );
 
 
+  /** CREACIÓN DE TEMPLATES */
+  function videoItemTemplate(movie) {
+    return(
+    `<div class="primaryPlaylistItem">
+      <div class="primaryPlaylistItem-image">
+        <img src="${movie.medium_cover_image}">
+      </div>
+      <h4 class="primaryPlaylistItem-title">
+        ${movie.title}
+      </h4>
+    </div>`
+    )
+  }
+
+  console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
+
+
+  actionList.data.movies.forEach((movie) => {
+    // utilizamos una arrow funtion que esta heredando el contexto
+    // debugger
+    const HTMLString = videoItemTemplate(movie);
+    console.log(HTMLString);
+  });
+  /** CREACIÓN DE TEMPLATES */
+
+
+
   /**Selectores */
 
   // JQuery
@@ -133,7 +160,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   const $overlay = document.getElementById('overlay')
   const $hideModal = document.getElementById('hide-modal')
 
-  const $sactionContainer = document.querySelector('#action')
+  const $actionContainer = document.querySelector('#action')
   const $dramaContainer = document.getElementById('#drama')
   const $animationContainer = document.getElementById('#animation')
 
@@ -144,6 +171,9 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   const $modalTitle = $modal.querySelector('h1')
   const $modalImage = $modal.querySelector('img')
   const $modalDescription = $modal.querySelector('p')
+
+
+  
 
 })()
 
