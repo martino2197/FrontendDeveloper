@@ -94,7 +94,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   });
 
 
-// Funciones asíncronas
+  /*Funciones asíncronas**/
 
 // Lo siguiente es equivalente al fetche que habiamos hecho anteriormente pero haciendolo en una funcion asincrona
 // Codigo asincrono que se lee de una manera sincrona
@@ -109,20 +109,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     return data
   }
 
-  const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
-  const dramaList = await getData('https://yts.mx/api/v2/list_movies.json?genre=drama')
-  const animationList = await getData('https://yts.mx/api/v2/list_movies.json?genre=animation')
-  // let terrorList
-  // getData('https://yts.mx/api/v2/list_movies.json?genre=terror')
-  //   .then(function(data) {
-  //     console.log('terrorList', data);
-  //   })
-  console.log('actionList', actionList);
-  console.log('terrorList', dramaList);
-  console.log('animationList', animationList);
-  // console.log(actionList, dramaList, animationList );
-
-  /**Selectores */
+    /**Selectores */
 
   // JQuery
   // const $homeJQ = $('.home .list #item'); //elementos de la clase home
@@ -143,6 +130,28 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   const $modalTitle = $modal.querySelector('h1')
   const $modalImage = $modal.querySelector('img')
   const $modalDescription = $modal.querySelector('p')
+  
+  $form.addEventListener('submit', (event) => {
+    // debugger
+    //el formulario esta recargando cada vez que nosotros estamos haciendo submit de ese formulario
+    //por defecto un formulario envia los datos de cada input que tenga atraves de un metodo llamado GET() o POST()
+    //Esto sirve para que el backendo reciba este envio de informacion a cierta url
+    
+    event.preventDefault(); //con esto le quitamos la accion por defecto que viene dentro del evento de submit
+  })
+
+  const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
+  const dramaList = await getData('https://yts.mx/api/v2/list_movies.json?genre=drama')
+  const animationList = await getData('https://yts.mx/api/v2/list_movies.json?genre=animation')
+  // let terrorList
+  // getData('https://yts.mx/api/v2/list_movies.json?genre=terror')
+  //   .then(function(data) {
+  //     console.log('terrorList', data);
+  //   })
+  console.log('actionList', actionList);
+  console.log('terrorList', dramaList);
+  console.log('animationList', animationList);
+  // console.log(actionList, dramaList, animationList );
 
 
 
@@ -168,6 +177,12 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       return html.body.children[0];
      /**Creación de DOM */
     }
+
+    function addEventClick($element) {
+      $element.addEventListener('click', () => {
+        alert('click')
+      })
+    }
   
     // console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
     function renderMovieList(list, $container) {
@@ -182,14 +197,17 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   
         const movieElement = createTemplate(HTMLString);
   
-        
+
         // $actionContainer
         $container.append(movieElement); // De esta manera vamos agregando de una en una cada pelicula por cada iteracion del forEach()
-       
         // Igual puede ser por seguridad ya que si se mete data directo en innerHTML puedes ser blanco de ataques XSS y con el método que uso Leonidas primero ese texto lo convierte y después se agrega con el append que es más seguro al elemento
   
-  
-  
+
+        /**Eventos */
+        addEventClick(movieElement);
+        /**Eventos */      
+
+
         /**Tambien podria hacerse de la sig manera si crear un DOM extra */
         // actionList.data.movies.forEach((movie) =>{
         //   constHTMLString = videoItemTemplate(movie);
@@ -203,6 +221,8 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
         // console.log(HTMLString);
       });
     }
+    
+
     
     renderMovieList(actionList.data.movies, $actionContainer);
     renderMovieList(dramaList.data.movies, $dramaContainer);
