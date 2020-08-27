@@ -122,34 +122,6 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   console.log('animationList', animationList);
   // console.log(actionList, dramaList, animationList );
 
-
-  /** CREACIÓN DE TEMPLATES */
-  function videoItemTemplate(movie) {
-    return(
-    `<div class="primaryPlaylistItem">
-      <div class="primaryPlaylistItem-image">
-        <img src="${movie.medium_cover_image}">
-      </div>
-      <h4 class="primaryPlaylistItem-title">
-        ${movie.title}
-      </h4>
-    </div>`
-    )
-  }
-
-  console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
-
-
-  actionList.data.movies.forEach((movie) => {
-    // utilizamos una arrow funtion que esta heredando el contexto
-    // debugger
-    const HTMLString = videoItemTemplate(movie);
-    console.log(HTMLString);
-  });
-  /** CREACIÓN DE TEMPLATES */
-
-
-
   /**Selectores */
 
   // JQuery
@@ -173,7 +145,40 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   const $modalDescription = $modal.querySelector('p')
 
 
+
+    /** CREACIÓN DE TEMPLATES */
+    function videoItemTemplate(movie) {
+      return(
+      `<div class="primaryPlaylistItem">
+        <div class="primaryPlaylistItem-image">
+          <img src="${movie.medium_cover_image}">
+        </div>
+        <h4 class="primaryPlaylistItem-title">
+          ${movie.title}
+        </h4>
+      </div>`
+      )
+    }
   
+    console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
+  
+  
+    actionList.data.movies.forEach((movie) => {
+      // utilizamos una arrow funtion que esta heredando el contexto
+      // debugger
+      const HTMLString = videoItemTemplate(movie);
+      
+      /**Creación de DOM */
+        const html = document.implementation.createHTMLDocument(); // Crea dentro de memoria de javascript un elemento html
+        html.body.innerHTML = HTMLString //html seria como un selector, innerHTML nos sirve para madarle html al elemento
+        // debugger
+      
+      $actionContainer.append(html.body.children[0]); // De esta manera vamos agregando de una en una cada pelicula por cada iteracion del forEach()
+      /**Creación de DOM */
+
+      // console.log(HTMLString);
+    });
+    /** CREACIÓN DE TEMPLATES */
 
 })()
 
