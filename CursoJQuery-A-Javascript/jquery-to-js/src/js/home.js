@@ -133,12 +133,12 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   const $hideModal = document.getElementById('hide-modal')
 
   const $actionContainer = document.querySelector('#action')
-  const $dramaContainer = document.getElementById('#drama')
-  const $animationContainer = document.getElementById('#animation')
+  const $dramaContainer = document.getElementById('drama')
+  const $animationContainer = document.getElementById('animation')
 
-  const $featuringContainer = document.getElementById('#featuring')
-  const $form = document.getElementById('#form')
-  const $home = document.getElementById('#home')
+  const $featuringContainer = document.getElementById('featuring')
+  const $form = document.getElementById('form')
+  const $home = document.getElementById('home')
 
   const $modalTitle = $modal.querySelector('h1')
   const $modalImage = $modal.querySelector('img')
@@ -159,27 +159,54 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       </div>`
       )
     }
-  
-    console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
-  
-  
-    actionList.data.movies.forEach((movie) => {
-      // utilizamos una arrow funtion que esta heredando el contexto
+
+    function createTemplate(HTMLString) {
+      /**Creación de DOM */
+      const html = document.implementation.createHTMLDocument(); // Crea dentro de memoria de javascript un elemento html
+      html.body.innerHTML = HTMLString //html seria como un selector, innerHTML nos sirve para madarle html al elemento
       // debugger
-      const HTMLString = videoItemTemplate(movie);
-      
-      /**Creación de DOM */
-        const html = document.implementation.createHTMLDocument(); // Crea dentro de memoria de javascript un elemento html
-        html.body.innerHTML = HTMLString //html seria como un selector, innerHTML nos sirve para madarle html al elemento
+      return html.body.children[0];
+     /**Creación de DOM */
+    }
+  
+    // console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
+    function renderMovieList(list, $container) {
+      // actionList.data.movies
+
+      $container.children[0].remove(); //esta linea es para borrar el loader
+
+      list.forEach((movie) => {
+        // utilizamos una arrow funtion que esta heredando el contexto
         // debugger
-      
-      $actionContainer.append(html.body.children[0]); // De esta manera vamos agregando de una en una cada pelicula por cada iteracion del forEach()
-      /**Creación de DOM */
-
-      // console.log(HTMLString);
-    });
-    /** CREACIÓN DE TEMPLATES */
-
+        const HTMLString = videoItemTemplate(movie);
+  
+        const movieElement = createTemplate(HTMLString);
+  
+        
+        // $actionContainer
+        $container.append(movieElement); // De esta manera vamos agregando de una en una cada pelicula por cada iteracion del forEach()
+       
+        // Igual puede ser por seguridad ya que si se mete data directo en innerHTML puedes ser blanco de ataques XSS y con el método que uso Leonidas primero ese texto lo convierte y después se agrega con el append que es más seguro al elemento
+  
+  
+  
+        /**Tambien podria hacerse de la sig manera si crear un DOM extra */
+        // actionList.data.movies.forEach((movie) =>{
+        //   constHTMLString = videoItemTemplate(movie);
+        //   $actionContainer.innerHTML += HTMLString;
+        // });
+        /**Muchos se pregunta por qué Leónidas Esteban creo un Dom desde Javascript vanilla y ahí inserto los elementos html para posteriormente acceder a este domingo y copiar el contenido de este en el elemento del Dom visible.
+            En ves de insertar directamente en el elemento del Dom visible.
+            La respuesta a esto el no las al final de la clase, Leónidas Esteban nos comenta que esto funciona semejante a react el cual crea un Dom virtual, sólo que react hace más cosas con dicho Dom virtual sería más complicado de imitar en una sola clase.
+        */
+  
+        // console.log(HTMLString);
+      });
+    }
+    
+    renderMovieList(actionList.data.movies, $actionContainer);
+    renderMovieList(dramaList.data.movies, $dramaContainer);
+    renderMovieList(actionList.data.movies, $animationContainer);
 })()
 
 // load()
