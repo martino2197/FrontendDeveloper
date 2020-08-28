@@ -94,6 +94,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   });
 
 
+  const BASE_API = 'https://yts.mx/api/v2/';
   /*Funciones asíncronas**/
 
 // Lo siguiente es equivalente al fetche que habiamos hecho anteriormente pero haciendolo en una funcion asincrona
@@ -141,8 +142,24 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       $element.setAttribute(attribute, attributes[attribute])
     }
   }
+
+  function featuringTemplate(peli) {
+    return (
+      `
+      <div class="featuring">
+        <div class="featuring-image">
+          <img src="${peli.medium_cover_image}" width="70" height="100" alt="">
+        </div>
+        <div class="featuring-content">
+          <p class="featuring-title">Pelicula encontrada</p>
+          <p class="featuring-album">${peli.title}</p>
+        </div>
+      </div>
+      `
+    )
+  }
   
-  $form.addEventListener('submit', (event) => {
+  $form.addEventListener('submit', async (event) => {
     // debugger
     //el formulario esta recargando cada vez que nosotros estamos haciendo submit de ese formulario
     //por defecto un formulario envia los datos de cada input que tenga atraves de un metodo llamado GET() o POST()
@@ -153,17 +170,29 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     $home.classList.add('search-active'); //De esta manera le colocamos la clase search-active a $home
 
     const $loader = document.createElement('img'); //con esto podemos crear elementos como div, span, p, etc..
+
+    /**Aqui va la busqueda por medio del formulari */
     setAttributes($loader, {
       src: 'src/images/loader.gif',
       height: 50,
       width: 50,
     })
     $featuringContainer.append($loader);
+
+    const data = new FormData($form); //con FormData(elemento html de formulario) podemos parsear un formulario
+    const peli = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`); //le damos forma a la url en donde vamos a buscar el titulo de la pelicula y vamos a limitar a 1 el numero de resultados que nos devuelva
+    
+    const HTMLString = featuringTemplate(peli.data.movies[0]) //De esta manera le estamos mandando directamente el resultado que obtumios al template
+    debugger
+    $featuringContainer.innerHTML = HTMLString;
+    // data.get('name') //el atributo name='name' permite obtener el valor de un elemento por medio de los .get()
+    
   })
+  /**Aqui va la busqueda por medio del formulari */
 
   const actionList = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
-  const dramaList = await getData('https://yts.mx/api/v2/list_movies.json?genre=drama')
-  const animationList = await getData('https://yts.mx/api/v2/list_movies.json?genre=animation')
+  const dramaList = await getData(`${BASE_API}list_movies.json?genre=drama`)
+  const animationList = await getData(`${BASE_API}list_movies.json?genre=animation`)
   // let terrorList
   // getData('https://yts.mx/api/v2/list_movies.json?genre=terror')
   //   .then(function(data) {
@@ -259,7 +288,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     
     renderMovieList(actionList.data.movies, $actionContainer);
     renderMovieList(dramaList.data.movies, $dramaContainer);
-    renderMovieList(actionList.data.movies, $animationContainer);
+    renderMovieList(animationList.data.movies, $animationContainer);
 })()
 
 // load()
