@@ -180,9 +180,21 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     $featuringContainer.append($loader);
 
     const data = new FormData($form); //con FormData(elemento html de formulario) podemos parsear un formulario
-    const peli = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`); //le damos forma a la url en donde vamos a buscar el titulo de la pelicula y vamos a limitar a 1 el numero de resultados que nos devuelva
+
+
+    /**Abajo vemos el ejemplo de la asignacion de una variable por destructuración */
+
+    // este const era para peli para despues utilizar peli.data.movies[0]
+    const {
+      data: {
+        movies: pelis
+      }
+    } = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`); //le damos forma a la url en donde vamos a buscar el titulo de la pelicula y vamos a limitar a 1 el numero de resultados que nos devuelva
     
-    const HTMLString = featuringTemplate(peli.data.movies[0]) //De esta manera le estamos mandando directamente el resultado que obtumios al template
+    // otroNombre
+
+    //en vez de pelis iba peli.data.movies[0]
+    const HTMLString = featuringTemplate(pelis[0]) //De esta manera le estamos mandando directamente el resultado que obtumios al template
     debugger
     $featuringContainer.innerHTML = HTMLString;
     // data.get('name') //el atributo name='name' permite obtener el valor de un elemento por medio de los .get()
