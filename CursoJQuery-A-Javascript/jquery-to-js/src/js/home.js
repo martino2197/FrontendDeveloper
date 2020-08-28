@@ -182,7 +182,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     const data = new FormData($form); //con FormData(elemento html de formulario) podemos parsear un formulario
 
 
-    /**Abajo vemos el ejemplo de la asignacion de una variable por destructuración */
+    /**Abajo vemos el ejemplo de la asignacion de una variable por desestructuración */
 
     // este const era para peli para despues utilizar peli.data.movies[0]
     const {
@@ -218,9 +218,9 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
 
 
     /** CREACIÓN DE TEMPLATES */
-    function videoItemTemplate(movie) {
+    function videoItemTemplate(movie, category) {
       return(
-      `<div class="primaryPlaylistItem">
+      `<div class="primaryPlaylistItem" data-id="${movie.id}" data-category="${category}">
         <div class="primaryPlaylistItem-image">
           <img src="${movie.medium_cover_image}">
         </div>
@@ -240,16 +240,21 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
      /**Creación de DOM */
     }
 
-    function showModal() {
+    function showModal($element) {
       $overlay.classList.add('active')
 
       $modal.style.animation = 'modalIn .8s forwards' // .style el cual nos permite cambiar y agregar estilos inline (< style=" "> por encima de nuestro archivo css)
+
+      /**Utilizando Dataset */
+      const id = $element.dataset.id;
+      const category = $element.dataset.category;
+      /**Utilizando Dataset */
     }
 
     function addEventClick($element) {
       $element.addEventListener('click', () => {
         // alert('click')
-        showModal()
+        showModal($element)
       })
     }
 
@@ -259,7 +264,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     }
   
     // console.log(videoItemTemplate('src/images/covers/bitcoin.jpg', 'bitcoin'));
-    function renderMovieList(list, $container) {
+    function renderMovieList(list, $container, category) {
       // actionList.data.movies
 
       $container.children[0].remove(); //esta linea es para borrar el loader
@@ -267,7 +272,7 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       list.forEach((movie) => {
         // utilizamos una arrow funtion que esta heredando el contexto
         // debugger
-        const HTMLString = videoItemTemplate(movie);
+        const HTMLString = videoItemTemplate(movie, category);
   
         const movieElement = createTemplate(HTMLString);
   
@@ -298,9 +303,9 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     
     $hideModal.addEventListener('click', hideModal)
     
-    renderMovieList(actionList.data.movies, $actionContainer);
-    renderMovieList(dramaList.data.movies, $dramaContainer);
-    renderMovieList(animationList.data.movies, $animationContainer);
+    renderMovieList(actionList.data.movies, $actionContainer, 'action');
+    renderMovieList(dramaList.data.movies, $dramaContainer, 'drama');
+    renderMovieList(animationList.data.movies, $animationContainer, 'animation');
 })()
 
 // load()
