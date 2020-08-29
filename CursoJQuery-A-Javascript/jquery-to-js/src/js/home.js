@@ -107,7 +107,13 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   async function getData(url) {
     const response = await fetch(url) // voy a pausar mi aplicacion hasta que mi fetch termine
     const data = await response.json() //recordemos que fetch nos retorna una promesa de forma nativa
-    return data
+    if (data.data.movie_count > 0) {
+      //aqui se acaba
+      return data
+    } //Estamos validando datos
+    //si no hay pelis aquí continua
+    // return data
+    throw new Error('No se encontro ningun resultado');
   }
 
     /**Selectores */
@@ -181,23 +187,34 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
 
     const data = new FormData($form); //con FormData(elemento html de formulario) podemos parsear un formulario
 
+    /** Manejo de errores */
+    try {
 
-    /**Abajo vemos el ejemplo de la asignacion de una variable por desestructuración */
+          /**Abajo vemos el ejemplo de la asignacion de una variable por desestructuración */
 
-    // este const era para peli para despues utilizar peli.data.movies[0]
-    const {
-      data: {
-        movies: pelis
-      }
-    } = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`); //le damos forma a la url en donde vamos a buscar el titulo de la pelicula y vamos a limitar a 1 el numero de resultados que nos devuelva
+         // este const era para peli para despues utilizar peli.data.movies[0]
+        const {
+          data: {
+            movies: pelis
+          }
+        } = await getData(`${BASE_API}list_movies.json?limit=1&query_term=${data.get('name')}`); //le damos forma a la url en donde vamos a buscar el titulo de la pelicula y vamos a limitar a 1 el numero de resultados que nos devuelva
     
-    // otroNombre
+        // otroNombre
 
-    //en vez de pelis iba peli.data.movies[0]
-    const HTMLString = featuringTemplate(pelis[0]) //De esta manera le estamos mandando directamente el resultado que obtumios al template
-    debugger
-    $featuringContainer.innerHTML = HTMLString;
-    // data.get('name') //el atributo name='name' permite obtener el valor de un elemento por medio de los .get()
+        //en vez de pelis iba peli.data.movies[0]
+        const HTMLString = featuringTemplate(pelis[0]) //De esta manera le estamos mandando directamente el resultado que obtumios al template
+        // debugger
+        $featuringContainer.innerHTML = HTMLString;
+        // data.get('name') //el atributo name='name' permite obtener el valor de un elemento por medio de los .get()
+
+    } catch(error) {
+      // debugger
+      alert(error.message);
+      $loader.remove();
+      $home.classList.remove('search-active'); //remueve la barra inferior donde suele mostrar la pelicula encontrada
+    }
+
+
     
   })
   /**Aqui va la busqueda por medio del formulari */
