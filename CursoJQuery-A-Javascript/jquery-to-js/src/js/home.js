@@ -202,17 +202,13 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
   })
   /**Aqui va la busqueda por medio del formulari */
 
-  const { data: { movies: actionList } } = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
-  const { data: { movies: dramaList } } = await getData(`${BASE_API}list_movies.json?genre=drama`)
-  const { data: { movies: animationList } } = await getData(`${BASE_API}list_movies.json?genre=animation`)
+
   // let terrorList
   // getData('https://yts.mx/api/v2/list_movies.json?genre=terror')
   //   .then(function(data) {
   //     console.log('terrorList', data);
   //   })
-  console.log('actionList', actionList);
-  console.log('terrorList', dramaList);
-  console.log('animationList', animationList);
+  
   // console.log(actionList, dramaList, animationList );
 
 
@@ -306,6 +302,15 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
         $container.append(movieElement); // De esta manera vamos agregando de una en una cada pelicula por cada iteracion del forEach()
         // Igual puede ser por seguridad ya que si se mete data directo en innerHTML puedes ser blanco de ataques XSS y con el método que uso Leonidas primero ese texto lo convierte y después se agrega con el append que es más seguro al elemento
   
+        /**Animaciones */
+        const image = movieElement.querySelector('img');
+
+        //asignamos un evento
+        image.addEventListener('load', (event) => {
+          //event.srcElement. y event.target seria igual que poner image.
+          event.target.classList.add('fadeIn');
+        })
+        
 
         /**Eventos */
         addEventClick(movieElement);
@@ -326,11 +331,23 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       });
     }
     
+    const { data: { movies: actionList } } = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
+    renderMovieList(actionList, $actionContainer, 'action');
+
+    const { data: { movies: dramaList } } = await getData(`${BASE_API}list_movies.json?genre=drama`)
+    renderMovieList(dramaList, $dramaContainer, 'drama');
+
+    const { data: { movies: animationList } } = await getData(`${BASE_API}list_movies.json?genre=animation`) 
+    renderMovieList(animationList, $animationContainer, 'animation');
+
+    console.log('actionList', actionList);
+    console.log('terrorList', dramaList);
+    console.log('animationList', animationList);
+
+    
     $hideModal.addEventListener('click', hideModal)
     
-    renderMovieList(actionList, $actionContainer, 'action');
-    renderMovieList(dramaList, $dramaContainer, 'drama');
-    renderMovieList(animationList, $animationContainer, 'animation');
+
 })()
 
 // load()
