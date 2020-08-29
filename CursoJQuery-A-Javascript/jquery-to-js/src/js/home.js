@@ -349,12 +349,18 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
     }
     
     const { data: { movies: actionList } } = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
+    window.localStorage.setItem('actionList', JSON.stringify(actionList)) //guardamos en local storage lo obtenido en getData
+
     renderMovieList(actionList, $actionContainer, 'action');
 
     const { data: { movies: dramaList } } = await getData(`${BASE_API}list_movies.json?genre=drama`)
+    window.localStorage.setItem('dramaList', JSON.stringify(dramaList)) //guardamos en local storage lo obtenido en getData
+
     renderMovieList(dramaList, $dramaContainer, 'drama');
 
     const { data: { movies: animationList } } = await getData(`${BASE_API}list_movies.json?genre=animation`) 
+    window.localStorage.setItem('animationList', JSON.stringify(animationList)) //guardamos en local storage lo obtenido en getData
+
     renderMovieList(animationList, $animationContainer, 'animation');
 
     console.log('actionList', actionList);
