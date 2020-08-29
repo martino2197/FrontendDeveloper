@@ -348,18 +348,30 @@ fetch("https://randomuser.me/api/") //fetch() me va a devolver una promesa
       });
     }
     
-    const { data: { movies: actionList } } = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
-    window.localStorage.setItem('actionList', JSON.stringify(actionList)) //guardamos en local storage lo obtenido en getData
+    async function cacheExist(category) {
+      const listName = `${category}List`;
+      const cacheList = window.localStorage.getItem(listName);
 
+      if (cacheList) {
+        return JSON.parse(cacheList);
+      }
+      const { data: { movies: data } } = await getData(`${BASE_API}list_movies.json?genre=${category}`);
+      window.localStorage.setItem(listName, JSON.stringify(data)) //guardamos en local storage lo obtenido en getData
+      return data;
+    }
+
+    // const { data: { movies: actionList } } = await getData('https://yts.mx/api/v2/list_movies.json?genre=action')
+    const actionList = await cacheExist('action');
+    // window.localStorage.setItem('actionList', JSON.stringify(actionList)) //guardamos en local storage lo obtenido en getData
     renderMovieList(actionList, $actionContainer, 'action');
 
-    const { data: { movies: dramaList } } = await getData(`${BASE_API}list_movies.json?genre=drama`)
-    window.localStorage.setItem('dramaList', JSON.stringify(dramaList)) //guardamos en local storage lo obtenido en getData
+    const dramaList = await cacheExist('drama');
+    // window.localStorage.setItem('dramaList', JSON.stringify(dramaList)) //guardamos en local storage lo obtenido en getData
 
     renderMovieList(dramaList, $dramaContainer, 'drama');
 
-    const { data: { movies: animationList } } = await getData(`${BASE_API}list_movies.json?genre=animation`) 
-    window.localStorage.setItem('animationList', JSON.stringify(animationList)) //guardamos en local storage lo obtenido en getData
+    const animationList = await cacheExist('animation'); 
+    // window.localStorage.setItem('animationList', JSON.stringify(animationList)) //guardamos en local storage lo obtenido en getData
 
     renderMovieList(animationList, $animationContainer, 'animation');
 
