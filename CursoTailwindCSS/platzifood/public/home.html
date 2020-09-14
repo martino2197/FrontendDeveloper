@@ -8,10 +8,38 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
-    <div class="px-2 bg-secondary text-white flex justify-between items-center">
-        <div><img class="h-8 py-1" src="images/logo-w.svg" alt=""></div>
-        <div class="text-2xl">&equiv;</div>
-    </div>
+    <nav class="bg-secondary text-gray-100">
+        <div class="px-2 bg-secondary text-white flex justify-between items-center">
+            <div><img class="h-8 py-1" src="images/logo-w.svg" alt=""></div>
+            <div class="text-2xl">&equiv;</div>
+        </div>
+        <div class="my-1 mx-2">
+            <input class="form-control" type="search" placeholder="Búsqueda">
+        </div>
+        <div class="py-1 mx-2 md:flex justify-around">
+            <div class="flex">
+                Precio:
+                <div class="ml-2">$</div>
+                <div class="ml-2 text-primary">$$</div>
+                <div class="ml-2">$$$</div>
+                <div class="ml-2">$$$$</div>
+            </div>
+            <div class="flex">
+                <div>
+                    Calificación
+                </div>
+                <div class="ml-2 text-primary">&starf; </div>
+                <div class="ml-px text-primary">&starf; </div>
+                <div class="ml-px text-primary">&starf; </div>
+                <div class="ml-px text-primary">&starf; </div>
+                <div class="ml-px">&star; </div>
+            </div>
+            <div>
+                <button class="btn btn-primary">Filtrar</button>
+            </div>
+        </div>
+    </nav>
+
 
     <main class="mb-8">
         <div class="h-56 md:h-100 md:bg-center bg-no-repeat bg-cover bg-bottom" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')">
@@ -39,25 +67,26 @@
                     <div class="mt-2 text-xs text-yellow-700">&starf;&starf;&starf;&starf;&star; / 36 reseñas</div>
                 </div>
             </div>
+        </div>
             <!-- Formulario -->
-            <div class="mx-2">
+            <div class="container mx-auto mt-4 mx-2">
                 <div>
                     <div> Nombre </div>
-                    <input class="w-full leading-snug text-gray-800 py-1 px-4 rounded border border-blue-300 bg-gray-200 placeholder-secondary hover:bg-white focus:outline-none focus:shadow-outline" type="text" placeholder="Nombres">
+                    <!--Se pueden omitir los  form-control:hover form-control:focus-->
+                    <input class="form-control placeholder-secondary form-control:hover form-control:focus" type="text" placeholder="Nombres">
                 </div>
                 <div>
                     <div> Email </div>
-                    <input class="w-full leading-snug text-gray-800 py-1 px-4 rounded border border-blue-300 bg-gray-200 placeholder-secondary hover:bg-white focus:outline-none focus:shadow-outline" type="email" placeholder="Email">
+                    <input class="form-control placeholder-secondary form-control:hover form-control:focus" type="email" placeholder="Email">
                 </div>
                 <div>
                     <div> Comentarios </div>
-                    <textarea class="w-full leading-snug text-gray-800 py-1 px-4 rounded border border-blue-300 bg-gray-200 placeholder-secondary hover:bg-white focus:outline-none focus:shadow-outline" name="" id="" cols="30" rows="10"></textarea>
+                    <textarea class="form-control placeholder-secondary form-control:hover form-control:focus" name="" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div>
-                    <button class="rounded shadow-xl py-1 px-4 bg-gray-500 mx-auto block hover:shadow-none hover:bg-gray-700 hover:text-white"> Enviar </button>
+                    <button class="btn btn-primary btn:hover mx-auto"> Enviar </button>
                 </div>
             </div>
-        </div>
     </main>
 
     <footer class="w-full text-white bg-secondary">
