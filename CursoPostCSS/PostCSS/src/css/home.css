@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', system-ui;
 }
 :root {
   --darkColor: #15192a;
@@ -17,6 +17,7 @@ body {
     font-size: 14px;
     border-bottom: 5px solid var(--lightColor)
   };
+  --viewportHeight: 50vh;
 }
 
 .btn {
@@ -27,15 +28,52 @@ body {
   background: var(--warningColor);
 }
 
+/*@custom-selector :--nombreDelSelector .elemento > .hijo, .elemento2 > .hijo;*/
+@custom-selector :--checkeable .checkbox-label, .radio-label;
+@custom-selector :--hightlight :hover, :active;
+
+
+.checkbox:checked + .primaryPlaylist-list {
+  display: none;
+}
+
+:--checkeable {
+  cursor: pointer;
+  user-select: none;
+  padding: 3px 7px;
+  border: 1px solid color(red b(10%));
+  border-bottom: 3px solid red;
+  color: gray(100);
+  font-size: 12px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+:--checkeable:--hightlight {
+  background: red;
+  color: white;
+}
+
 /*home layout*/
 .home {
   background: var(--lightColor);
   display: grid;
-  height: 100vh;
+  /*height: calc(var(--viewportHeight) * 2);*/
+  height: calc(50vh * 2);
   grid-template-columns: 350px 1fr;
   grid-template-rows: 1fr 150px;
   grid-template-areas: "sidebar primary"
                        "sidebar featuring";
+  /*background: green;*/
+  @media (--small) {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 150px;
+    grid-template-areas: "primary"
+                         "sidebar"
+                         "featuring";
+  }
 }
 
 .home-sidebar {
@@ -59,14 +97,19 @@ body {
   box-sizing: border-box;
   height: 100vh;
   overflow: auto;
+  /*background: color(black alpha(50%) contrast(50%));*/
+  /*background: hwb(hue, whiteness, blackness)*/
+  /*background: hwb(0 - 360, 0 - 100%, 0 100%, opacidad)*/
+  background: hwb(230, 8%, 82%, 1);
+  /*background: gray(0 - 255);*/
+  /*background: gray(204);*/
 }
 
 /*Logo*/
 .logo {
   width: calc(100% - 100px);
   margin: 0 auto;
-  background: blue;
-  /* background-image: image-set(url de la imagen, url de la imagen); */
+  /*background-image: image-set(url de la imagen densidad, url de la imagen densidad);*/
   background-image: image-set(url('../../src/images/platzi-video.png') 1x, url('../../src/images/platzi-video-2x.png') 2x, url('../../src/images/platzi-video-3x.png') 300dpi);
   height: 40px;
   background-size: contain;
@@ -90,22 +133,42 @@ body {
   padding: 0 20px;
 }
 
-.myPlaylist-item a {
-  color: white;
-  text-decoration: none;
-  font-size: .8em;
-  display: block;
-  margin-bottom: 7px;
-}
-.myPlaylist-item:last-child a {
-  margin-bottom: 0;
+.myPlaylist :any-link:hover {
+  color: color(peru l(80%) s(50%));
+  transform: scale(1.1);
 }
 
-
-.myPlaylist-item a:hover {
-  text-decoration: underline;
+.myPlaylist-item {
+  & a {
+    color: white;
+    text-decoration: none;
+    font-size: .8em;
+    display: block;
+    margin-bottom: 7px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &:last-child a {
+    margin-bottom: 0;
+  }
+  @nest .myPlaylist & {
+    border: 5px dashed pink;
+  }
 }
 
+/*.myPlaylist .myPlaylist-item {
+}
+*/
+
+
+
+.myPlaylist-item:matches(:last-child, :nth-of-type(3), :first-child) {
+  background: color(red l(70%));
+}
+.myPlaylist-item:not(:last-child, :nth-of-type(3)) {
+  background: color(blue l(80%));
+}
 /*playlistFriends*/
 
 .playlistFriends {
@@ -240,6 +303,13 @@ body {
   align-items: center;
   padding-left: 100px;
   color: white;
+  @media (--small) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+  }
 }
 
 .featuring-image {
@@ -254,35 +324,22 @@ body {
   margin: 10px;
 }
 
-/* @custom-media --small screen and (max-width: 768px); */
-@custom-media --extra-small screen and (width < 480px);
+/*@custom-media --small screen and (max-width: 768px);*/
+@custom-media --extra-small (width < 480px);
 @custom-media --small screen and (width < 768px);
 @custom-media --medium screen and (width >= 768px);
-@custom-media --large screen and (width >= 768px);
+@custom-media --large screen and (width >= 1024px);
 
-@media (--small) {
+/*@media (--small) {
   body {
     border: 10px solid blue;
   }
-  .home {
-    height: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 150px;
-    grid-template-areas: "primary"
-                          "sidebar"
-                          "featuring";
-  }
-  .featuring {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 150px;
-  }
+
+
 }
 
 @media (--extra-small) {
   body {
     border: 10px solid orange;
-  } 
-}
+  }
+}*
