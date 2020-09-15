@@ -63,7 +63,15 @@ body {
 
 /*Logo*/
 .logo {
-
+  width: calc(100% - 100px);
+  margin: 0 auto;
+  background: blue;
+  /* background-image: image-set(url de la imagen, url de la imagen); */
+  background-image: image-set(url('../../src/images/platzi-video.png') 1x, url('../../src/images/platzi-video-2x.png') 2x, url('../../src/images/platzi-video-3x.png') 300dpi);
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .logo-image {
   margin: 0;
@@ -244,4 +252,37 @@ body {
 .featuring-album {
   font-size: 1.3em;
   margin: 10px;
+}
+
+/* @custom-media --small screen and (max-width: 768px); */
+@custom-media --extra-small screen and (width < 480px);
+@custom-media --small screen and (width < 768px);
+@custom-media --medium screen and (width >= 768px);
+@custom-media --large screen and (width >= 768px);
+
+@media (--small) {
+  body {
+    border: 10px solid blue;
+  }
+  .home {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 150px;
+    grid-template-areas: "primary"
+                          "sidebar"
+                          "featuring";
+  }
+  .featuring {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+  }
+}
+
+@media (--extra-small) {
+  body {
+    border: 10px solid orange;
+  } 
 }
