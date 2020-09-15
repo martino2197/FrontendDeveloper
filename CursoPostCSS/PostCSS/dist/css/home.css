@@ -6,36 +6,40 @@ body {
   --darkColor: #15192a;
   --lightColor: white;
   --warningColor: red;
-  --button: {
-    border: 1px solid var(--lightColor);
-    border-radius: 5px;
-    background: var(--darckColor);
-    color: var(--lightColor);
-    padding: .5em 2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 14px;
-    border-bottom: 5px solid var(--lightColor)
-  };
 }
 
 .btn {
-  @apply --button;
+  border: 1px solid white;
+  border: 1px solid var(--lightColor);
+  border-radius: 5px;
+  background: var(--darckColor);
+  color: white;
+  color: var(--lightColor);
+  padding: .5em 2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 5px solid white;
+  border-bottom: 5px solid var(--lightColor);
 }
 
 .btn.warning {
+  background: red;
   background: var(--warningColor);
 }
 
 /*home layout*/
 .home {
-  /* autoprefixer: off */
+  background: white;
   background: var(--lightColor);
+  display: -ms-grid;
   display: grid;
   height: 100vh;
+  -ms-grid-columns: 350px 1fr;
   grid-template-columns: 350px 1fr;
+  -ms-grid-rows: 1fr 150px;
   grid-template-rows: 1fr 150px;
-  grid-template-areas: "sidebar primary"
+      grid-template-areas: "sidebar primary"
                        "sidebar featuring";
 }
 
@@ -64,6 +68,7 @@ body {
   grid-template-columns: 1fr;
   -ms-grid-rows: auto 1fr 1fr;
   grid-template-rows: auto 1fr 1fr;
+  background: #15192a;
   background: var(--darkColor);
   color: white;
   padding: 1em;

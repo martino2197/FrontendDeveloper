@@ -29,7 +29,6 @@ body {
 
 /*home layout*/
 .home {
-  /* autoprefixer: off */
   background: var(--lightColor);
   display: grid;
   height: 100vh;
