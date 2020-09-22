@@ -1,0 +1,23 @@
+{
+  "name": "jsnpm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luis Martin Maceda <martino2197@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.15.0",
+    "moment": "^2.29.0"
+  },
+  "devDependencies": {
+    "date-fns": "^2.16.1",
+    "webpack": "^4.44.2"
+  },
+  "optionalDependencies": {
+    "eslint": "^7.9.0"
+  }
+}

@@ -1,0 +1,2 @@
+# De esta manera evitamos mandar al repositorio la carpeta de node_modules asi como tampoco a produccion
+node_modules/
