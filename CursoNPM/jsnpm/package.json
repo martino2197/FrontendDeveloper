@@ -10,7 +10,6 @@
   "author": "Luis Martin Maceda <martino2197@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "json-server": "^0.15.0",
     "moment": "^2.29.0"
   },
   "devDependencies": {
